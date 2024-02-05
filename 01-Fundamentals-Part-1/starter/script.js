@@ -16,6 +16,7 @@ let myCurrentJob = "Teacher";
 console.log(myFirstJob); // JS Coder
 */
 //////////////////////////////////////////////////
+
 /*
 // DATA TYPE
 // Primitive Data Type
@@ -64,6 +65,7 @@ console.log(typeof year);
 console.log(typeof null); // Null is same as undefined (empty Value) but the output is object
 */
 ////////////////////////////////////////////
+
 /*
 // Lecture 10
 // Let, Const and Var
@@ -91,6 +93,7 @@ job = "Student";
 // Lecture 11
 
 /////////////////////////////////////////
+
 /*
 // Lecture 12
 // Operator Precedence
@@ -114,6 +117,7 @@ console.log(AGE_ZAK, AGE_SARAH, AVERAGE_AGE);
 */
 ////////////////////////////////////////////////
 
+/*
 // Lecture 13
 // CODING CHALLENGE #1
 // TEST DATA 1:
@@ -134,3 +138,171 @@ const JOHN_BMI = JOHN_WEIGHT / JOHN_HEIGHT ** 2;
 const MARK_HIGHER_BMI = MARK_BMI > JOHN_BMI;
 
 console.log(MARK_BMI, JOHN_BMI, MARK_HIGHER_BMI);
+*/
+//////////////////////////////////////////
+
+/*
+// Lecture 14
+// Strings & Templates Literals
+const FIRST_NAME = "Amani";
+const JOB = "Coder";
+const BIRTHYEAR = 1996;
+const currentYear = 2024;
+
+const AMANI =
+  "I'm" +
+  " " +
+  FIRST_NAME +
+  " " +
+  "a" +
+  " " +
+  (currentYear - BIRTHYEAR) +
+  " " +
+  "years old" +
+  "!"; // Type coercion JS will convert the (number) into string
+// console.log(AMANI);
+
+// Template Literals = ES6
+const AMANI_NEW = `I'm ${FIRST_NAME} a ${
+  currentYear - BIRTHYEAR
+} years old TopNotch ${JOB}!`;
+console.log(AMANI_NEW);
+
+// Using backticks for regular string
+console.log(`Hello guys, I'm pleased to welcome you all to Ziha Estate!`);
+
+// Multiline string before ES6
+console.log(
+  "String with \n\
+ multi-lines \n\
+ characters"
+);
+// Multi-lines string in ES6
+console.log(`String
+with multi-lines
+in ES6`);
+*/
+///////////////////////////////////////////
+
+/*
+// Lecture 15
+// Taking decisions with: if/else statement
+const AGE = 26;
+
+if (AGE >= 18) {
+  console.log("Sarah can start driving 👍🚙!"); // Get executed if the condition evaluates to true
+} else {
+  const YEARS_LEFT = 18 - AGE;
+  console.log(`Sarah is too young, wait another ${YEARS_LEFT} years 😉!`); // Get executed if the conditional evaluates to false
+}
+
+// Century Program
+const BIRTHYEAR = 2001;
+let century;
+
+if (BIRTHYEAR <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
+
+console.log(century);
+*/
+//////////////////////////////////////////////
+
+/*
+// Lecture 16
+// Coding Challenge #2
+// TEST DATA 1:
+const MARK_WEIGHT = 78;
+const MARK_HEIGHT = 1.69;
+const JOHN_WEIGHT = 92;
+const JOHN_HEIGHT = 1.95;
+
+// TEST DATA 2:
+// const MARK_WEIGHT = 95;
+// const MARK_HEIGHT = 1.88;
+// const JOHN_WEIGHT = 85;
+// const JOHN_HEIGHT = 1.76;
+
+// Calculate both their BMIs
+const MARK_BMI = MARK_WEIGHT / MARK_HEIGHT ** 2;
+const JOHN_BMI = JOHN_WEIGHT / JOHN_HEIGHT ** 2;
+
+if (MARK_BMI > JOHN_BMI)
+  console.log(`Mark's BMI (${MARK_BMI}) is higher than John's (${JOHN_BMI})!`);
+else
+  console.log(`John's BMI (${JOHN_BMI}) is higher than Mark's (${MARK_BMI})!`);
+*/
+///////////////////////////////////////////
+
+/*
+// Lecture 17
+// Type conversion and coercion
+// Type conversion
+const INPUT_YEAR = "1996"; // Input from user
+console.log(Number(INPUT_YEAR), INPUT_YEAR); // Output 1996 as a number.
+console.log(Number(INPUT_YEAR) + 18);
+
+// Converting a string to a number
+console.log(Number("Amani")); // Output NaN(Invalid number)
+console.log(typeof NaN);
+
+// Converting number to string
+console.log(String(23), 23);
+
+// Type coercion
+// Whenever an operator deals with two values of
+// different types.
+console.log("I'm " + 23 + " years old.");
+
+// Different operator
+console.log("23" + "10" + 3); // convert to string
+console.log("23" - "10" - 3); // convert to number
+console.log("23" * "2"); // convert to number
+console.log("23" / "2"); // convert to number
+
+// Guess the output
+let n = "1" + 1;
+n = n - 1;
+console.log(n); // Output 10
+
+let y = 2 - 3 + 3 - "3" + "4";
+y = y + 2 - "3";
+console.log(y); // Output -145
+*/
+///////////////////////////////////////////
+
+/*
+// Lecture 18
+// Truthy & Falsy Values
+
+// Five Falsy Values in JS:
+// 0, '', undefined, null and NaN
+
+// Everything else is Truthy values
+// values that will be convert to true when try
+// to convert to a Boolean
+
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean("Amani")); // String that is not an empty-string is truthy value
+console.log(Boolean({}));
+console.log(Boolean(""));
+
+// Type coercion with Boolean
+// In a logical context of if/else statement
+const MONEY = 310;
+
+if (MONEY) console.log("Don't spend it all 😉!");
+else console.log("You should get a Job!");
+
+// Testing if a variable is defined
+let height; // Height holds the value undefined
+
+if (height) console.log("YAH! Height is defined!");
+else console.log("Height is not DEFINED!");
+*/
+////////////////////////////////////////////
+
+// Lecture 19
