@@ -305,4 +305,45 @@ else console.log("Height is not DEFINED!");
 */
 ////////////////////////////////////////////
 
+/*
 // Lecture 19
+// Equality Operators: == vs ===
+const AGE = "18";
+
+if (AGE === 18) console.log("You're just became an adult :D! (Strict)");
+
+if (AGE == 18) console.log("You're just became an adult :D! (Loose)"); // '18' the string get convert to a number
+
+// === / Strict Equality Operator
+// Doesn't do type coercion
+console.log("18" === 18); // Output false
+
+// == / Loose Equality Operator
+// Does type coercion
+console.log("18" == 18); // Output true, '18' get convert to a number
+
+// Getting a value from web page
+// using the prompt() function
+const FAVORITE_NUMBER = Number(prompt(`What's your favorite number?`));
+
+console.log(FAVORITE_NUMBER);
+console.log(typeof FAVORITE_NUMBER);
+
+// if (FAVORITE_NUMBER == 23) console.log("Cool! 23 is a Cool number!"); // '23' == 23 the string('23') get converted to a number
+
+// if (FAVORITE_NUMBER === 23) console.log("Cool! 23 is a Cool number!"); // '23' === 23 -> FALSE, NO TYPE COERCION
+
+if (FAVORITE_NUMBER === 23) {
+  console.log("Cool! 23 is a Cool number!");
+} else if (FAVORITE_NUMBER === 3) {
+  console.log("3 is also a cool number!");
+} else {
+  console.log("Number is not 23 or 3");
+}
+
+// Different Operator
+if (FAVORITE_NUMBER !== 23) console.log("Why not 23?");
+*/
+//////////////////////////////////////////////
+
+// Lecture 20
