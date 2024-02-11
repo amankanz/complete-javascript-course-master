@@ -346,4 +346,248 @@ if (FAVORITE_NUMBER !== 23) console.log("Why not 23?");
 */
 //////////////////////////////////////////////
 
+/*
 // Lecture 20
+// Boolean Logic
+// It uses several logical operator to combine
+// true & false values.
+
+// Example
+// A: Sarah has a driver's license
+// B: Sarah has good vision
+*/
+////////////////////////////////////////
+
+/*
+// Lecture 21
+// Logical Operators in JS
+const has_drivers_license = true; // A
+const has_good_vision = true; // B
+
+console.log(has_drivers_license && has_good_vision);
+console.log(has_drivers_license || has_good_vision);
+console.log(!has_drivers_license);
+
+// if (has_drivers_license && has_good_vision)
+//   console.log(`Sarah is able to drive!`);
+// else console.log(`Someone else should drive...`);
+
+const is_tired = true; // C
+console.log(has_drivers_license && has_good_vision && is_tired);
+
+if (has_drivers_license && has_good_vision && !is_tired)
+  console.log(`Sarah is able to drive!`);
+else console.log(`Someone else should drive...`);
+*/
+//////////////////////////////////////////////////
+
+/*
+// Lecture 22
+// CODING CHALLENGE #3
+/*
+1. Calculate the average score for each team, using the test data below.
+
+TEST DATA: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110.
+*/
+// // Dolphins Average Score
+// const dolphins_score_1 = 96;
+// const dolphins_score_2 = 108;
+// const dolphins_score_3 = 89;
+// const dolphins_average_score =
+//   (dolphins_score_1 + dolphins_score_2 + dolphins_score_3) / 3;
+
+// console.log(dolphins_average_score); // 97.67
+
+// // Koalas Average Score
+// const koalas_score_1 = 88;
+// const koalas_score_2 = 91;
+// const koalas_score_3 = 110;
+// const koalas_average_score =
+//   (koalas_score_1 + koalas_score_2 + koalas_score_3) / 3;
+
+// console.log(koalas_average_score);
+
+// // TEST DATA BONUS 1:
+// // Dolphins Average Score
+// const dolphins_score_1 = 97;
+// const dolphins_score_2 = 112;
+// const dolphins_score_3 = 101;
+// const dolphins_average_score =
+//   (dolphins_score_1 + dolphins_score_2 + dolphins_score_3) / 3;
+
+// console.log(dolphins_average_score); // 97.67
+
+// // Koalas Average Score
+// const koalas_score_1 = 109;
+// const koalas_score_2 = 95;
+// const koalas_score_3 = 123;
+// const koalas_average_score =
+//   (koalas_score_1 + koalas_score_2 + koalas_score_3) / 3;
+
+// console.log(koalas_average_score);
+
+// // TEST DATA BONUS 2:
+// // Dolphins Average Score
+// const dolphins_score_1 = 97;
+// const dolphins_score_2 = 80;
+// const dolphins_score_3 = 101;
+// const dolphins_average_score =
+//   (dolphins_score_1 + dolphins_score_2 + dolphins_score_3) / 3;
+
+// console.log(dolphins_average_score); // 97.67
+
+// // Koalas Average Score
+// const koalas_score_1 = 109;
+// const koalas_score_2 = 50;
+// const koalas_score_3 = 106;
+// const koalas_average_score =
+//   (koalas_score_1 + koalas_score_2 + koalas_score_3) / 3;
+
+// console.log(koalas_average_score);
+
+// if (
+//   dolphins_average_score > koalas_average_score &&
+//   dolphins_average_score >= 100
+// )
+//   console.log(`Dolphins wins the Trophy🏆!`);
+// else if (
+//   dolphins_average_score < koalas_average_score &&
+//   koalas_average_score >= 100
+// )
+//   console.log(`Kaolas wins the Trophy 🏆!`);
+// else if (
+//   dolphins_average_score === koalas_average_score &&
+//   dolphins_average_score >= 100 &&
+//   koalas_average_score >= 100
+// )
+//   console.log(`It's a Draw, Both wins 🏆!`);
+// else console.log(`No team wins the Trophy😭!`);
+////////////////////////////////////////////////
+
+/*
+// Lecture 23
+// The Switch Statement
+// Use it to compare one value against multiple
+// options
+const day = "thursday";
+
+switch (day) {
+  case "monday": // day === "monday"
+    console.log("Plan the meetings and projects");
+    console.log("Go to Coding Meetups");
+    break;
+  case "tuesday":
+    console.log("Prepare pseudocode for each features");
+    break;
+  case "wednesday":
+  case "thursday":
+    console.log("Write code for each feature");
+    break;
+  case "friday":
+    console.log("Test each feature");
+    break;
+  case "saturday":
+  case "sunday":
+    console.log("Enjoy the weekend with fellow friends and Coders :D");
+    break;
+  default:
+    console.log("Not a valid day! :C");
+}
+
+// if/else control structure
+// if (day === "monday") {
+//   console.log("Plan the meetings and projects");
+//   console.log("Go to Coding Meetups");
+// } else if (day === "tuesday")
+//   console.log("Prepare pseudocode for each features");
+// else if (day === "wednesday" || day === "thursday")
+//   console.log("Write code for each feature");
+// else if (day === "friday") console.log("Test each feature");
+// else if (day === "saturday" || day === "sunday")
+//   console.log("Enjoy the weekend with fellow friends and Coders :D");
+// else console.log("Not a valid day! :C");
+*/
+/////////////////////////////////////////////////
+
+/*
+// Lecture 24
+// Statements and Expressions
+// Expressions produce a value
+3 + 4;
+1996;
+true && false && !false;
+
+// Statement
+// Are like full sentences that translate to actions
+// actions we want our program to perform
+if (23 > 10) {
+  const str = "23 is bigger";
+}
+
+// In template literals we can only
+// insert expressions
+const me = "ziha";
+console.log(`I'm ${2034 - 1997} years old ${me}.`);
+*/
+/////////////////////////////////////////////
+
+/*
+// Lecture 25
+// The Conditional (Ternary) Operator
+// const age = 17;
+
+// age >= 18
+//   ? console.log("I like to drink wine 🍷")
+//   : console.log("I like to dink water 💧");
+// age < 18
+//   ? console.log("I like to drink milk 🥛")
+//   : console.log("I like to drink beer 🍺");
+
+// An operator is an expression
+// it always produces value
+// const age = 23;
+// const drink = age >= 18 ? "wine 🍷" : "water 💧";
+
+// console.log(drink);
+
+// Using if/else block
+// let drink2;
+
+// if (drink2 >= 18) {
+//   drink2 = "wine 🍷";
+// } else {
+//   drink2 = "milk 🥛";
+// }
+// console.log(drink2);
+
+// Ternary Operator is an expression which produces
+// a value
+// we can use it inside template literals
+const age = 17;
+
+console.log(`I like to dink ${age >= 18 ? "wine 🍷" : "milk 🥛"}`);
+*/
+///////////////////////////////////////////////
+
+/*
+// Lecture 26
+// CODING CHALLENGE #4
+// Tip Calculator
+//Tip 15% if the bill value is between 50 and 300.
+// If the value is different, the tip is 20%
+
+// TEST DATA: Test for bill values 275, 40 and 430
+const bill = 275;
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value is ${
+    bill + tip
+  }`
+);
+*/
+////////////////////////////////////////
+
+// Lecture 27
+// JS Releases: ES5, ES6+ And ESNEXT
+// Modern JavaScript from the beginning
