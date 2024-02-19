@@ -238,4 +238,178 @@ console.log(ages);
 */
 ///////////////////////////////////////
 
+/*
 // Lecture 37
+// Basic Array Operation (Methods)
+const friends = ["Amani", "Ingrid", "Rehemah"];
+
+// Useful Array Methods:
+
+// Add Elements to the Array
+// push() method
+const new_length = friends.push("Ian");
+// console.log(friends);
+// console.log(new_length);
+
+// unshift()
+friends.unshift("Hakheem");
+console.log(friends);
+
+// Remove Elements from the Array
+// pop() method
+const popped_element = friends.pop();
+// friends.pop();
+// console.log(friends);
+// console.log(popped_element);
+
+// shift() method
+const shift_element = friends.shift();
+console.log(friends);
+console.log(shift_element);
+
+// indexOf() method
+// Return the position of an element
+console.log(friends.indexOf("Rehemah"));
+console.log(friends.indexOf("Bob")); // Not inside
+
+// includes() ES6
+// Returns a boolean if the element is / isn't
+//  inside the array
+friends.push(23);
+console.log(friends.includes("Rehemah"));
+console.log(friends.includes("Bob"));
+console.log(friends.includes("23"));
+
+// Use the includes() to write conditionals
+if (friends.includes("Ingrid")) {
+  console.log("You have a friend named Ingrid!");
+}
+*/
+///////////////////////////////////////////////
+
+/*
+// Lecture 38
+// CODING CHALLENGE #2
+const calc_tip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+
+// console.log(calc_tip(100));
+
+// TEST DATA: 125,555 and 44
+const bills = [125, 555, 44];
+const tips = [calc_tip(bills[0]), calc_tip(bills[1]), calc_tip(bills[2])];
+console.log(tips);
+
+const calc_total = function (bill) {
+  return bill + calc_tip(bill);
+};
+
+const total = [
+  calc_total(bills[0]),
+  calc_total(bills[1]),
+  calc_total(bills[2]),
+];
+
+console.log(total);
+*/
+/////////////////////////////////////////
+
+/*
+// Lecture 39
+// Introduction to Object
+
+// Array
+const amani_array = ["Ziha", 2037 - 1997, "Coder", ["Ingrid", "Meshack"]];
+
+// Object
+// Keyvalue-pairs
+// for unstructured data, data that we want to name
+// then retrieve based on that name.
+const amani_obj = {
+  firstName: "Amani",
+  lastName: "Ziha",
+  age: 2037 - 1997,
+  job: "Coder",
+  friends: ["Ingrid", "Philip", "Salleh"],
+};
+*/
+////////////////////////////////////////
+
+/*
+// Lecture 40
+// Dot VS Bracket Notation
+const amani_obj = {
+  firstName: "Amani",
+  lastName: "Ziha",
+  age: 2037 - 1997,
+  job: "Coder",
+  friends: ["Ingrid", "Philip", "Salleh"],
+};
+
+console.log(amani_obj);
+console.log(amani_obj.lastName);
+// Bracket Notation
+// Specify the string with property name
+console.log(amani_obj["lastName"]);
+
+// Use an expression inside the []
+const name_key = "Name";
+
+console.log(amani_obj["first" + name_key]);
+console.log(amani_obj["last" + name_key]);
+
+// Another example for using [] Notation
+// const interested_opt = prompt(
+//   "What do yu want to know about Amani? Choose between firstName, lastName, age, job and friends"
+// );
+// if (amani_obj[interested_opt]) {
+//   // if truthy
+//   console.log(amani_obj[interested_opt]);
+// } else {
+//   console.log(
+//     "Wrong request! Choose between firstName, lastName, age, job and friends"
+//   );
+// }
+
+// Adding new property into the object
+amani_obj.location = "Vancouver BC";
+amani_obj["LinkedIn"] = "linkedin/in/fred-kaneza";
+
+console.log(amani_obj);
+
+// Challenge
+// "Amani has 3 friends, and his best friend is called Ingrid"
+
+console.log(`
+${amani_obj.firstName} has ${amani_obj.friends.length}, and his best friend is called ${amani_obj.friends[0]}`);
+*/
+/////////////////////////////////////
+
+// Lecture 41
+// Object Methods
+// We can hold all kind of different data type in
+// object
+const amani = {
+  firstName: "Amani",
+  lastName: "Ziha",
+  birthYear: 1997,
+  job: "Coder",
+  friends: ["Ingrid", "Philip", "Salleh"],
+  hasDriverLicense: true,
+  // calcAge: function (birthYear) {
+  //   return 2037 - birthYear;
+  // },
+  calcAge: function () {
+    console.log(this);
+    return 2037 - this.birthYear;
+  },
+};
+// The this keyword
+// is equal to the object calling the method
+// amani_obj is the object calling the method
+console.log(amani.calcAge());
+
+// console.log(amani_obj["calcAge"](1997));
+
+// Time Stamp: 11:58
