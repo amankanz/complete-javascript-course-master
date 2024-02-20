@@ -386,6 +386,7 @@ ${amani_obj.firstName} has ${amani_obj.friends.length}, and his best friend is c
 */
 /////////////////////////////////////
 
+/*
 // Lecture 41
 // Object Methods
 // We can hold all kind of different data type in
@@ -400,16 +401,163 @@ const amani = {
   // calcAge: function (birthYear) {
   //   return 2037 - birthYear;
   // },
+  // calcAge: function () {
+  //   // console.log(this);
+  //   return 2037 - this.birthYear;
+  // },
+
+  // Most efficient solution
   calcAge: function () {
-    console.log(this);
-    return 2037 - this.birthYear;
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+  getSummary: function () {
+    return `${this.firstName} is ${this.calcAge()}-year old ${
+      this.job
+    }, and has ${this.hasDriverLicense ? "a" : "no"} driver's license!`;
   },
 };
 // The this keyword
 // is equal to the object calling the method
 // amani_obj is the object calling the method
+
+//Only need to calculate the age once
 console.log(amani.calcAge());
+
+// simple retrieve the property age already calculated.
+console.log(amani.age);
+console.log(amani.age);
+console.log(amani.age);
 
 // console.log(amani_obj["calcAge"](1997));
 
-// Time Stamp: 11:58
+// Challenge
+// 'Amani is 40-year old coder, and has a/no driver's license'
+console.log(amani.getSummary());
+*/
+/////////////////////////////////////////////
+
+/*
+// Lecture 42
+// CODING CHALLENGE #3
+// Go back to Mark and John comparing their BMI!
+// mass in kg and height in meter
+const mark = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  },
+};
+// console.log(mark.calcBMI());
+// console.log(mark.BMI);
+
+const john = {
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  },
+};
+// console.log(john.calcBMI());
+// console.log(john.BMI);
+
+// if (mark.calcBMI() > john.calcBMI()) {
+//   console.log(
+//     `${mark.fullName}'s BMI (${mark.BMI}) is higher than ${john.fullName}'s (${john.BMI})!`
+//   );
+// } else {
+//   console.log(
+//     `${john.fullName}'s BMI (${john.BMI}) is higher than ${mark.fullName}'s (${mark.BMI})!`
+//   );
+// }
+mark.calcBMI() > john.calcBMI()
+  ? console.log(
+      `${mark.fullName}'s BMI (${mark.BMI}) is higher than ${john.fullName}'s (${john.BMI})!`
+    )
+  : console.log(
+      `${john.fullName}'s BMI (${john.BMI}) is higher than ${mark.fullName}'s (${mark.BMI})!`
+    );
+*/
+//////////////////////////////////////////
+
+/*
+// Lecture 43
+// Iteration: The FOR Loop
+// console.log("Lifting weights repetition 1 🏋️‍♂️");
+// console.log("Lifting weights repetition 2 🏋️‍♂️");
+// console.log("Lifting weights repetition 3 🏋️‍♂️");
+// console.log("Lifting weights repetition 4 🏋️‍♂️");
+// console.log("Lifting weights repetition 5 🏋️‍♂️");
+
+// for loop keeps running  while condition is TRUE
+for (let rep = 1; rep <= 5; rep++) {
+  console.log(`Lifting weights repetition ${rep} 🏋️‍♂️`);
+}
+*/
+///////////////////////////////////////
+
+/*
+// Lecture 44
+// Looping Arrays. Breaking and Continuing
+const amani = [
+  "Amani",
+  "Ziha",
+  2037 - 1997,
+  "Coder",
+  ["Ingrid", "Meshack"],
+  true,
+];
+
+// Create a new array based on the values of
+// the original array
+// types[0] = 'string'
+const types = [];
+
+// Individual log every element of the array
+// console.log(amani[0]);
+// console.log(amani[1]);
+// // ...
+// console.log(amani[4]);
+// amani[5] does NOT exist
+
+for (let i = 0; i < amani.length; i++) {
+  // Reading values from amani array
+  console.log(amani[i], typeof amani[i]);
+
+  // Filling the types array
+  // types[i] = typeof amani[i];
+  types.push(typeof amani[i]);
+}
+
+console.log(types);
+
+const years = [1996, 1997, 1998, 1999, 2024];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+
+console.log(ages);
+
+// continue and break
+console.log("=== ONLY STRING ===");
+for (let i = 0; i < amani.length; i++) {
+  if (typeof amani[i] !== "string") continue;
+  console.log(amani[i], typeof amani[i]);
+}
+
+console.log("=== BREAK WITH NUMBER ===");
+for (let i = 0; i < amani.length; i++) {
+  if (typeof amani[i] === "number") break;
+  console.log(amani[i], typeof amani[i]);
+}
+*/
+//////////////////////////////////////////////
+
+// Lecture 45
