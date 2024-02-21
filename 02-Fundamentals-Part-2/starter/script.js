@@ -560,4 +560,107 @@ for (let i = 0; i < amani.length; i++) {
 */
 //////////////////////////////////////////////
 
+/*
 // Lecture 45
+// Looping backwards and Loops in Loops
+const amani = [
+  "Amani",
+  "Ziha",
+  2037 - 1997,
+  "Coder",
+  ["Ingrid", "Meshack"],
+  true,
+];
+
+// Looping backwards through the arrays
+// 0, 1, ..., 4
+// 4, 3, ..., 0
+for (let i = amani.length - 1; i >= 0; i--) {
+  console.log(i, amani[i]);
+}
+
+// Loop inside another loop
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`----Starting exercise ${exercise}`);
+
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Exercise ${exercise}: lifting weight repetition ${rep} 🏋️‍♂️`);
+  }
+}
+*/
+////////////////////////////////////////
+
+/*
+// Lecture 46
+// The while loop
+// for (let rep = 1; rep <= 5; rep++) {
+//   console.log(`Lifting weights repetition ${rep} 🏋️‍♂️`);
+// }
+
+// For the while loop we specify the condition
+let rep = 1;
+// while (rep <= 7) {
+//   // console.log(`WHILE LOOP: Lifting weights repetition ${rep} 🏋️‍♂️`);
+//   rep++;
+// }
+
+// Roll dice
+// In this case we don't know how many times
+// the loop will run. we DON'T need a counter
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+// Keep running the loop until the dice variable
+// hold the of 6
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log("Loop is about to end...");
+}
+*/
+///////////////////////////////////////////
+
+/*
+// Lecture 47
+// CODING CHALLENGE #4
+// Improve the Steven's Tip calculator using loops
+// TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+const calc_tip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+
+// const calc_total = function (bill) {
+//   return bill + calc_tip(bill);
+// };
+
+for (let i = 0; i < bills.length; i++) {
+  const tip = calc_tip(bills[i]);
+  // const total = calc_total(bills[i]);
+  tips.push(tip);
+  totals.push(tip + bills[i]);
+}
+
+console.log(tips);
+console.log(totals);
+
+const calc_average = function (arr) {
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum / arr.length;
+};
+
+console.log(calc_average(totals));
+console.log(calc_average(tips));
+*/
+////////////////////////////////////////////
+
+// Lecture 48
+// Pathways and section Roadmaps
+
+// DONE JS FUNDAMENTALS PART 2 ////////////
