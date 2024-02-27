@@ -153,4 +153,188 @@ document.querySelector('.check').addEventListener('click', function () {
 */
 ///////////////////////////////////////////////
 
+/*
 // Lecture 70
+// CODING CHALLENGE #1
+let secret_number = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+
+document.querySelector('.check').addEventListener('click', function () {
+  const guess = Number(document.querySelector('.guess').value);
+  // console.log(typeof guess, guess);
+
+  // When there is no input
+  if (!guess) {
+    document.querySelector('.message').textContent = '⛔ NO number!';
+
+    // When player wins
+  } else if (guess === secret_number) {
+    document.querySelector('.message').textContent = '🎉 Correct Number!';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secret_number;
+
+    // When guess is too high
+  } else if (guess > secret_number) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📈 Too High!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '👽 You lost the Game!';
+      document.querySelector('.score').textContent = 0;
+    }
+
+    // When guess is too low
+  } else if (guess < secret_number) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📉 Too Low!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '👽 You lost the Game!';
+      document.querySelector('.score').textContent = 0;
+    }
+  }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  secret_number = Math.trunc(Math.random() * 20) + 1;
+  score = 20;
+
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
+});
+*/
+///////////////////////////////////////
+
+/*
+// Lecture 71
+// Implementing Highscore
+let secret_number = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+let highScore = 0;
+
+document.querySelector('.check').addEventListener('click', function () {
+  const guess = Number(document.querySelector('.guess').value);
+  // console.log(typeof guess, guess);
+
+  // When there is no input
+  if (!guess) {
+    document.querySelector('.message').textContent = '⛔ NO number!';
+
+    // When player wins
+  } else if (guess === secret_number) {
+    document.querySelector('.message').textContent = '🎉 Correct Number!';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secret_number;
+
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
+
+    // When guess is too high
+  } else if (guess > secret_number) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📈 Too High!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '👽 You lost the Game!';
+      document.querySelector('.score').textContent = 0;
+    }
+
+    // When guess is too low
+  } else if (guess < secret_number) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📉 Too Low!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '👽 You lost the Game!';
+      document.querySelector('.score').textContent = 0;
+    }
+  }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  secret_number = Math.trunc(Math.random() * 20) + 1;
+  score = 20;
+
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
+});
+*/
+///////////////////////////////////////////
+
+/*
+// Lecture 72
+// Refactoring our code: The Dry Principle
+// STEP 1: Identify duplicate or almost duplicate code
+let secret_number = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+let highScore = 0;
+
+const display_message = function (message) {
+  return (document.querySelector('.message').textContent = message);
+};
+
+document.querySelector('.check').addEventListener('click', function () {
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(typeof guess, guess);
+
+  // When there is no input
+  if (!guess) {
+    display_message('⛔ NO number!');
+
+    // When player wins
+  } else if (guess === secret_number) {
+    display_message('🎉 Correct Number!');
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secret_number;
+
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
+
+    // When guess is too high
+  } else if (guess !== secret_number) {
+    if (score > 1) {
+      display_message(guess > secret_number ? '📈 Too High!' : '📉 Too Low!');
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      display_message('👽 You lost the Game!');
+      document.querySelector('.score').textContent = 0;
+    }
+  }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  secret_number = Math.trunc(Math.random() * 20) + 1;
+  score = 20;
+
+  display_message('Start guessing...');
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.number').style.width = '15rem';
+});
+*/
+/////////////////////////////////////////////
+
+// Lecture 73
+// Project #2: Modal Window
