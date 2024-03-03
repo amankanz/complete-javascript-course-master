@@ -46,7 +46,6 @@ overlay.addEventListener('click', close_modal);
 */
 ////////////////////////////
 
-/*
 // Lecture 75
 // Handling an 'ESC' Keypress Event
 const modal = document.querySelector('.modal');
@@ -77,7 +76,7 @@ document.addEventListener('keydown', function (e) {
     close_modal();
   }
 });
-*/
+
 ////////////////////////////////////////////
 
 // Lecture 76
