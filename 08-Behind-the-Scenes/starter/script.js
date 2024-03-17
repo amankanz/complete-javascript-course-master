@@ -214,4 +214,71 @@ addArrow(2, 3, 6);
 */
 /////////////////////////////////////////////
 
+/*
 // Lecture 92
+// Primitives vs Object (Primitive vs Reference types)
+let age = 25;
+let oldAge = age;
+age = 26;
+
+console.log(oldAge);
+console.log(age);
+
+const me = {
+  name: 'Ziha',
+  age: 26,
+};
+
+const friend = me;
+friend.age = 30;
+
+console.log('Friend:', friend);
+console.log('Me:', me);
+*/
+///////////////////////////////////
+
+/*
+// Lecture 93
+// Primitive vs Object in Practice
+
+// Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Ziha';
+
+console.log(oldLastName);
+console.log(lastName);
+
+// Reference types
+const rehemah = {
+  firstName: 'Rehemah',
+  lastName: 'Ziha',
+  age: 27,
+};
+
+const married_rehemah = rehemah;
+married_rehemah.lastName = 'Davins';
+married_rehemah.firstName = 'Ian';
+
+// console.log('Before marriage:', rehemah);
+// console.log('After marriage:', married_rehemah);
+
+// Copying Object
+// Use Object.assign() to merge two objects
+const rehemah2 = {
+  firstName: 'Rehemah',
+  lastName: 'Ziha',
+  age: 27,
+  family: ['Ian', 'Hackeem'],
+};
+
+const rehemah_copy = Object.assign({}, rehemah2);
+rehemah_copy.lastName = 'Davins';
+
+rehemah_copy.family.push('Nikita');
+rehemah_copy.family.push('Amina');
+
+console.log('Before marriage:', rehemah2);
+console.log('After marriage:', rehemah_copy);
+*/
+////////////////////////////////
