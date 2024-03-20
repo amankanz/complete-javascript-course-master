@@ -47,6 +47,11 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
 /*
@@ -204,4 +209,101 @@ console.log(restaurant.name);
 */
 ////////////////////////////////////////////
 
+/*
 // Lecture 98
+// Rest Pattern and Parameters
+// Pack elements into an array
+
+// 1) Destructuring
+
+// SPREAD, because on the RIGHT side of the =
+const arr = [1, 2, ...[3, 4]];
+
+// REST, because on the LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+
+console.log(a, b, others);
+
+// Another example
+const [pizza, , risotto, ...otherFoods] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+
+console.log(pizza, risotto, otherFoods);
+
+// Objects
+const { sat, ...weekDays } = restaurant.openingHours;
+
+console.log(sat, weekDays);
+
+// 2) Functions
+const add = function (...numbers) {
+  let sum = 0;
+
+  for (let i = 0; i < numbers.length; i++) {
+    const element = numbers[i];
+    sum += element;
+  }
+  console.log(sum);
+};
+
+add(1, 2, 3);
+add(4, 5, 6, 7);
+add(10, 11, 12, 13);
+
+// SPREAD is the opposite of REST
+const x = [23, 22, 28];
+add(...x);
+
+// REAL-WORLD example
+restaurant.orderPizza('chicken', 'green-peppers', 'mushrooms', 'chez');
+*/
+////////////////////////////////
+
+// Lecture 99
+// Short circuiting (&& and ||)
+
+// 3 properties of logical operators:
+// Use ANY data type, return ANY data type and
+// they can can do Short-circuiting
+console.log('----- OR -----');
+console.log(3 || 'Amani');
+console.log('' || 'Ziha');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+// Real-world example
+// restaurant.numGests = 3;
+const guest_1 = restaurant.numGests ? restaurant.numGests : 10;
+console.log(guest_1);
+
+// Short-circuiting and the OR operator ||
+// Easier way to set default values
+const guest_2 = restaurant.numGests || 10;
+console.log(guest_2);
+
+console.log('--- AND ----');
+console.log(0 && 'Ziha');
+console.log(7 && 'Amani');
+
+console.log('Hello' && 23 && null && 'Amani');
+
+// Practical example
+if (restaurant.orderPasta) {
+  restaurant.orderPizza('mushroom', 'spinach');
+}
+
+// Using short-circuiting and the AND operator &&
+restaurant.orderPizza && restaurant.orderPizza('Chicken', 'chilli');
+
+// Summary
+console.log('---- Summary -----');
+restaurant.africans = 10;
+const guest_3 = restaurant.africans || 'NO';
+console.log(guest_3);
+
+restaurant.orderPasta &&
+  restaurant.orderPasta('Chicken', 'Mushrooms', 'Chilli');
