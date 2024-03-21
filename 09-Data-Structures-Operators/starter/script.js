@@ -261,6 +261,7 @@ restaurant.orderPizza('chicken', 'green-peppers', 'mushrooms', 'chez');
 */
 ////////////////////////////////
 
+/*
 // Lecture 99
 // Short circuiting (&& and ||)
 
@@ -307,3 +308,63 @@ console.log(guest_3);
 
 restaurant.orderPasta &&
   restaurant.orderPasta('Chicken', 'Mushrooms', 'Chilli');
+*/
+///////////////////////////////////
+
+/*
+// Lecture 100
+// The Nullish Coalescing operator (??)
+// O is a falsy value and so we go to the second
+// operand
+restaurant.africans = 0;
+const guest_3 = restaurant.africans || 10;
+console.log(guest_3);
+
+// Nullish Coalescing operator ES2020
+// Nullish: null and undefined (NOT 0 or "")
+// All the nullish values will short-circuit the evaluation
+// Only if the 1st value was null or undefined only then the second operand will be executed and returned. 
+const guest_correct = restaurant.africans ?? 10;
+console.log(guest_correct);
+*/
+///////////////////////////////////
+
+// Lecture 101
+// Logical Assignment Operators ES2021
+const rest_1 = {
+  name: 'Angel In Us.',
+  // numGuests: 30,
+  numGuests: 0,
+};
+
+const rest_2 = {
+  name: "Roll-x's",
+  owner: 'Ziha Majolera',
+};
+
+// Setting default value for the restaurant
+// with NO numGuest
+// Short-circuiting with the OR operator
+// rest_1.numGuests = rest_1.numGuests || 10;
+// rest_2.numGuests = rest_2.numGuests || 10;
+
+// The OR assignment operator ||=
+// rest_1.numGuests ||= 10;
+// rest_2.numGuests ||= 10;
+
+// Nullish assignment operator (null or undefined)
+rest_1.numGuests ??= 10;
+rest_2.numGuests ??= 10;
+
+// console.log(rest_1);
+// console.log(rest_2);
+
+// Logical AND assignment operator
+// rest_1.owner = rest_1.owner && '<ANONYMOUS>';
+// rest_2.owner = rest_2.owner && '<ANONYMOUS>';
+
+rest_1.owner &&= '<ANONYMOUS>';
+rest_2.owner &&= '<ANONYMOUS>';
+
+console.log(rest_1);
+console.log(rest_2);
