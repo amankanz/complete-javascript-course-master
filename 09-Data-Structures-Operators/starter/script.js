@@ -5,6 +5,7 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+/*
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -53,6 +54,7 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+*/
 
 /*
 // Lecture 95
@@ -372,6 +374,7 @@ console.log(rest_2);
 */
 ///////////////////////////////////
 
+/*
 // Lecture 102
 // Coding Challenge #1
 /*
@@ -391,7 +394,7 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 
 GOOD LUCK 😀
 */
-
+/*
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -437,6 +440,111 @@ const game = {
 const [players1, players2] = game.players;
 console.log(players1, players2);
 
-// 2).
+// 2). Rest pattern(REST syntax) & Destructuring
 const [gk, ...fieldPlayers] = players1;
 console.log(gk, fieldPlayers);
+
+// 3). Spread operator
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+// 4). Spread operator
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(players1Final);
+
+// 5). Destructuring Nested Object
+// const { team1, x: draw, team2 } = game.odds;
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, team2, draw);
+
+// 6). REST Parameter
+// const { score, scored } = game;
+// console.log(score, scored);
+
+const print_goals = function (...players) {
+  console.log(`${players.length} goals scored`);
+  console.log(...players);
+};
+print_goals(...game.scored);
+
+// 7). The AND logical operator (&&)
+
+team1 < team2 && console.log('Team2 is more likely to win! 🏆');
+*/
+//////////////////////////////////
+
+/*
+// Lecture 103
+// Looping Arrays: The For-of loop
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+
+// Current element
+for (const item of menu) console.log(item);
+
+// Current Index
+// Destructuring the current index
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+*/
+////////////////////////////
+
+// Lecture 104
+// Enhanced Object literals
+
+// ES6 Computing property name
+const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const [, , , , fir] = weekDays;
+console.log(fir);
+
+const openingHours = {
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekDays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [`Day-: ${4 + 2}`]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  // ES6 Enhanced Object (1)
+  openingHours,
+
+  // ES6 Writing methods (2)
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  oderDelivery({ starterIndex = 1, mainIndex = 1, time = '20:30', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+};
+
+console.log(restaurant);
