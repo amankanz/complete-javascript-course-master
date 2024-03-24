@@ -497,7 +497,7 @@ for (const [i, el] of menu.entries()) {
 // ES6 Computing property name
 const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const [, , , , fir] = weekDays;
-console.log(fir);
+// console.log(fir);
 
 const openingHours = {
   [weekDays[3]]: {
@@ -508,7 +508,7 @@ const openingHours = {
     open: 11,
     close: 23,
   },
-  [`Day-: ${4 + 2}`]: {
+  [weekDays[5]]: {
     open: 0, // Open 24 hours
     close: 24,
   },
@@ -547,4 +547,63 @@ const restaurant = {
   },
 };
 
-console.log(restaurant);
+// console.log(restaurant);
+/////////////////////////////////
+
+// Lecture 105
+// Optional Chaining (.?) ES2020
+
+if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
+
+// console.log(restaurant.openingHours.mon.open);
+
+// WITH the Optional chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+// Optional chaining and Nullish coalescing operator
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
+for (const day of days) {
+  // console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? 'Closed';
+  console.log(`On ${day} we open at ${open}`);
+}
+
+// Methods
+/*
+Optional chaining does indeed also work for calling methods
+We can check if a method actually exist before we can call it.
+The ? will check is the .orderBugger method exits, 
+if it doesn't it will immediately return undefine
+*/
+
+console.log(restaurant.order?.(1, 0) ?? 'Method does not exist');
+console.log(restaurant.orderBugger?.(1, 0) ?? 'Method does not exist');
+
+// Arrays
+/*
+The optional chaining also works on arrays. 
+Basically we can use to check if an array is empty.
+The optional chaining here test if the value on the left does exist.
+
+NB:Get used to this optional chaining operator, which almost always get used 
+together with the Nullish coalescing operator so that we can actually do something
+incase we don't get the result from the object or from the array that is on the left 
+hand side.
+*/
+const users = [
+  {
+    name: 'Ziha',
+    email: 'hola@ziha.io',
+  },
+];
+
+console.log(users[0]?.name ?? 'User array empty!');
+
+const users2 = [];
+console.log(users2[0]?.name ?? 'User array empty');
+
+if (users.length > 0) console.log(users[0].name);
+else console.log('User array empty');
