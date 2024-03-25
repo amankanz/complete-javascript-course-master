@@ -5,6 +5,7 @@ const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // Data needed for first part of the section
+
 /*
 const restaurant = {
   name: 'Classico Italiano',
@@ -55,8 +56,318 @@ const restaurant = {
   },
 };
 */
+// ES6 Computing property name
+const weekDays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+
+const openingHours = {
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekDays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekDays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  // ES6 Enhanced Object (1)
+  openingHours,
+
+  // ES6 Writing methods (2)
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  oderDelivery({ starterIndex = 1, mainIndex = 1, time = '20:30', address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+};
+
+// Lecture 109
+//
+
+///////////////////////////////////////////////////
+// Lecture 108
+// SETS
+/*
+In the past JS had little built-in data-structure basically we only had objects and arrays. In ES6 two more data-structure were introduced: Sets and Maps  
+*/
+/*
+// Sets:
+// Is just a collection of unique values. That means a set can never have an duplicate. And it can also hold mixed data-type
+
+// Just like arrays, sets are also iterables.
+// NB: Sets are different from arrays because:
+// its element are unique
+// and the order of elements in the sets is irrelevant
+const order_sets = new Set([
+  'Pizza',
+  'Buggers',
+  'Green',
+  'Pasta',
+  'Milk-shake',
+  'Pizza',
+  'Buggers',
+  'Pasta',
+]);
+
+console.log(order_sets);
+
+// Strings are also iterable
+console.log(new Set('Ziha'));
+
+// Size of Sets
+console.log(order_sets.size);
+
+// Check for an element in a set
+console.log(order_sets.has('Buggers'));
+console.log(order_sets.has('Chips'));
+
+// Add new element to a set
+order_sets.add('Chips');
+order_sets.add('Chips');
+console.log(order_sets);
+
+// Delete elements from a set
+order_sets.delete('Pasta');
+console.log(order_sets);
+
+// Delete all the elements of the Set
+// order_sets.clear();
+// console.log(order_sets);
+
+// NB: In sets there are not indexes, In fact there is not way of getting values out of a set
+// If your goal is store values in order and then retrieve them it's best to use an array.
+
+// Looping over Set
+for (const order of order_sets) console.log(order);
+
+// Example
+// Main use case of set is to remove duplicate values of arrays.
+const staff = [
+  'waiter',
+  'chef',
+  'waiter',
+  'manager',
+  'security',
+  'waiter',
+  'chef',
+  'cashier',
+  'cashier',
+];
+
+// Converting a set to an array
+// The SPREAD operator works on all iterables
+const job_titles = [...new Set(staff)];
+console.log(job_titles);
+
+console.log(new Set(staff).size);
+console.log(new Set('ZihalirwaAmaniFredKaneza').size);
+
+// NB: Sets are not intended to replace arrays, whenever you need to store values in order and might contain duplicate always use arrays. It is also true when you need to manipulate data.
+
+// Keep Sets in mind whenever you need to work with unique values
+
+///////////////////////////////////////////////
+// Lecture 107
+// Coding Challenge #2
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+/* 
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀
+*/
+// a) Understand the problem
+
+// b) Breaking into Sub-problem
+
+// 1).
+// const players = game.scored;
+
+// for (const [i, el] of Object.entries(players)) {
+//   console.log(`Goal ${Number(i) + 1}: ${el}`);
+// }
+
+// 2).
+/*
+const odds = Object.values(game.odds);
+
+let average = 0;
+
+for (const value of odds) {
+  average += value;
+}
+average /= odds.length;
+console.log(average);
+*/
+
+// 3).
+/*
+NB: In the array we use .entries() method to get the entries of the array. But in the object we have to use Object.entries() and then pass into the method the object we are interested in.
+*/
+// const team_odds = Object.entries(game.odds);
+// console.log(team_odds);
+
+// for (const [key, value] of team_odds) {
+//   console.log(`Odd of victory ${game[key] ?? 'Draw'}: ${value}`);
+// }
+// for (const [key, value] of team_odds) {
+//   const team_str = key === 'x' ? 'Draw' : `victory ${game[key]}`;
+//   console.log(`Odd of ${team_str}: ${value}`);
+// }
+
+// BONUS
+// const scored = game.scored;
+// console.log(scored);
+
+// const scorers = {
+//   [scored[1]]: 1,
+//   [scored[3]]: 1,
+//   [scored[0]]: 2,
+// };
+// console.log(scorers);
+
+// So the solution is to loop over the array, and add the array elements as object properties, and then increase the count as we encounter a new occurence of a certain element
+// const scorers = {};
+
+// const players = game.scored;
+// console.log(players);
+
+// for (const player of game.scored) {
+//   // console.log(player);
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+// console.log(scorers);
+/*
+///////////////////////////////
+// Lecture 106
+// Looping Objects: Object Keys. Values. and Entries
 
 /*
+Recap: We learn about the For-of loop to loop over array, which is an iterable. We can also loop over objects which are not iterables but in an indirect way.
+
+Few option depending exactly on what we want to loop over:
+Do we want to loop over the object
+  * Property names
+  * Or over the values
+  * Or both together 
+*/
+
+// Looping over Property Names (Keys)
+/*
+Object.keys return an array containing the property names of the openingHours object.
+*/
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// let openStr = `We are open on ${properties.length} Days:`;
+// for (const day of properties) {
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
+
+// Looping over Property Values
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// for (const value of values) {
+//   console.log(value);
+// }
+
+// Looping over the entire object
+/*
+To really simulate, to loop over the entire object, we actually need the entries(names + values together).
+
+NB: This distinction between the array and the object, is important as we loop ove the entire object. 
+*/
+// const entries = Object.entries(openingHours);
+// console.log(entries);
+
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
+////////////////////////////////////////
+
+/*
+//////////////////////////////////////////////
 // Lecture 95
 // Destructing Arrays
 const arr = [1, 2, 3];
@@ -436,6 +747,7 @@ const game = {
   },
 };
 
+
 // 1).
 const [players1, players2] = game.players;
 console.log(players1, players2);
@@ -491,6 +803,7 @@ for (const [i, el] of menu.entries()) {
 */
 ////////////////////////////
 
+/*
 // Lecture 104
 // Enhanced Object literals
 
@@ -546,10 +859,11 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
-
+*/
 // console.log(restaurant);
 /////////////////////////////////
 
+/*
 // Lecture 105
 // Optional Chaining (.?) ES2020
 
@@ -579,8 +893,8 @@ The ? will check is the .orderBugger method exits,
 if it doesn't it will immediately return undefine
 */
 
-console.log(restaurant.order?.(1, 0) ?? 'Method does not exist');
-console.log(restaurant.orderBugger?.(1, 0) ?? 'Method does not exist');
+// console.log(restaurant.order?.(1, 0) ?? 'Method does not exist');
+// console.log(restaurant.orderBugger?.(1, 0) ?? 'Method does not exist');
 
 // Arrays
 /*
@@ -593,6 +907,7 @@ together with the Nullish coalescing operator so that we can actually do somethi
 incase we don't get the result from the object or from the array that is on the left 
 hand side.
 */
+/*
 const users = [
   {
     name: 'Ziha',
@@ -607,3 +922,7 @@ console.log(users2[0]?.name ?? 'User array empty');
 
 if (users.length > 0) console.log(users[0].name);
 else console.log('User array empty');
+*/
+/////////////////////////////////////////////
+
+// Go Up
