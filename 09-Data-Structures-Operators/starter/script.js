@@ -107,8 +107,429 @@ const restaurant = {
   },
 };
 
+// Lecture 117
+// String Methods Practice
+const flights2 =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+// Understand the Problem
+
+// Break the problem into sub-problem
+
+const get_code = str => str.slice(0, 3).toUpperCase();
+
+const fix_str = function (text) {
+  const words = text.split('+');
+  console.log(words);
+
+  for (const w of words) {
+    const text = w.split(';');
+    const [type, from, to, time] = text;
+    const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+      '_',
+      ' '
+    )} from ${get_code(from)} to ${get_code(to)} (${time.replace(
+      ':',
+      'h'
+    )})`.padStart(45);
+
+    console.log(output);
+  }
+};
+
+fix_str(flights2);
+
+//////////////////////////////////////////////////////
+// Lecture 116
+// Coding Challenge #4
+/* 
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
+
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
+
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
+
+HINT 1: Remember which character defines a new line in the textarea 😉
+HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+
+Afterwards, test with your own test data!
+
+GOOD LUCK 😀
+*/
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+const button = document.querySelector('button');
+const text_area = document.querySelector('textarea');
+
+// Understand the problem
+
+// Break the problem into sub-problem
+
+const convert_camel_case = function () {
+  const phrases = text_area.value.toLowerCase();
+  const text = phrases.trim().split('\n');
+  console.log(text);
+
+  for (const [i, t] of text.entries()) {
+    const [first, second] = t.trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+};
+
+button.addEventListener('click', convert_camel_case);
+
+/*
+////////////////////////////////////////////////////////
+// Lecture 115
+// Working with Strings Part 3
+// .split() method
+console.log('a+very+nice+day+!'.split('+'));
+console.log('Ziha Amani'.split(' '));
+
+const [firstName, lastName] = 'Ziha Amani'.split(' ');
+console.log(firstName, lastName);
+
+// .jon() method
+// It's the opposite of split()
+const new_name = ['Coder', firstName, lastName.toUpperCase()].join(' ');
+console.log(new_name);
+
+// Example
+const capitalize_name = function (name) {
+  const names = name.split(' ');
+  const names_upper = [];
+
+  for (const n of names) {
+    // names_upper.push(n[0].toUpperCase() + n.slice(1));
+    names_upper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+
+  console.log(names_upper.join(' '));
+};
+
+const passenger = 'amani zihalirwa kaneza fred';
+
+capitalize_name(passenger);
+
+// Padding Strings
+const message = 'Go to gate 23!';
+console.log(message.padEnd(22, '+'));
+console.log('Ziha'.padStart(24, '+').padEnd(30, '+'));
+
+// Example
+const mask_credit_card = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  console.log(str);
+  console.log(last.padStart(str.length, '*'));
+};
+
+mask_credit_card(4892929223467888);
+mask_credit_card('679292822736471723');
+
+// .repeat() method
+const message2 = 'Bad weather... All Departures delayed! ';
+console.log(message2.repeat(6));
+
+const plane_inline = function (n) {
+  return `There are ${n} planes line ${'✈'.repeat(n)}`;
+};
+
+console.log(plane_inline(12));
+console.log(plane_inline(3));
+console.log(plane_inline(6));
+
+/*
+////////////////////////////////////////////////////////
+// Lecture 114
+// Working with string Part 2
+const airline = 'Uganda Airline';
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+console.log('ziha'.toUpperCase());
+
+// Example
+// Fix capitalization in name
+const passenger = 'zIhA';
+const passenger_lower = passenger.toLowerCase();
+const passenger_correct =
+  passenger_lower[0].toUpperCase() + passenger_lower.slice(1);
+console.log(passenger_correct);
+
+// #CHALLENGE a function to fix Capitalization
+
+// Comparing Email
+const email = 'hello@ziha.io';
+const login_email = ' Hello@Ziha.Io \n';
+
+// const lower_email = login_email.toLowerCase();
+// const trim_email = lower_email.trim();
+// console.log(trim_email);
+
+const normalized_email = login_email.toLowerCase().trim();
+console.log(normalized_email);
+console.log(normalized_email === email);
+
+// # CHALLENGE a function to compare emails
+
+// Replacing parts of a string
+const price_ug = '1,000,000ugx';
+const price_us = price_ug.replace('ugx', '$').replaceAll(',', '.');
+console.log(price_us);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+
+// Regular Expression
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Booleans
+const plane = 'Airbus A032ziha';
+console.log(plane.includes('A032'));
+console.log(plane.includes('Boeing'));
+
+console.log(plane.startsWith('Air'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('ziha')) {
+  console.log('Part of the NEW Airbus family');
+}
+
+// Practice exercises
+const check_baggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('NO allowed on board!');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+
+check_baggage('I have a Laptop, some Snack and a Pocket Knife');
+check_baggage('Hoodies and a Camera');
+check_baggage('Some drinks and a gun for protection');
+
+/*
+// Lecture 113
+// Working with strings Part 1
+const airline = 'Uganda Airline';
+const plane = 'A320';
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log(plane[3]);
+console.log('B723'[0]);
+
+// Length of a string
+console.log(airline.length);
+console.log('B246'.length);
+
+// Methods
+console.log(airline.indexOf('a')); // position 2
+console.log(airline.lastIndexOf('a'));
+console.log(airline.indexOf('Uganda')); // Case sensitive
+
+// slice() method
+console.log(airline.indexOf('d'));
+console.log(airline.slice(4, 10));
+
+// NO hard-coding
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+// Negative parameter
+console.log(airline.slice(-3));
+console.log(airline.slice(1, -3));
+
+// Example
+const check_middle_seat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log(`You got ${seat} middle seat. 😬`);
+  else console.log('You got lucky 😍');
+};
+
+check_middle_seat('12B');
+check_middle_seat('2C');
+check_middle_seat('17E');
+
+console.log(new String('Ziha'));
+console.log(typeof new String('Ziha'));
+console.log(typeof new String('Ziha').slice(-1));
+/////////////////////////////////////////////////////
+// Lecture 112
+// Coding Challenge #3
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
+
+GOOD LUCK 😀
+*/
+/*
+const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+// a) Understand the problem
+
+// b) Break the problem into sub-problem
+
+// 1.
+const events = [...new Set([...gameEvents.values()])];
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// 3.
+const time = [...gameEvents.keys()].pop();
+
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
+);
+
+// 4.
+for (const [min, event] of gameEvents) {
+  const half = min < 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${min}: ${event}`);
+}
+
+// Lecture 111
+// Summary: Which Data Structure to use?
+
+///////////////////////////////////////
+/*
+// Lecture 110
+// Maps: Iteration
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['Correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again..!'],
+]);
+console.log(question);
+
+console.log(Object.entries(openingHours));
+// Convert Object to Maps
+const hours_map = new Map(Object.entries(openingHours));
+console.log(hours_map);
+
+// Iteration
+// Quiz App
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+// const answer = Number(prompt());
+// console.log(question.get('Correct'));
+// console.log(question.get(question.get('Correct') === answer));
+
+// Converting Maps to Arrays
+// Using the Spread Operator
+console.log([...question]);
+
+// Method on Arrays
+// console.log(question.entries());
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+// This is exactly the as when we loop over the object the only difference is that objects are not iterable we need Object.entries to convert it to an iterable.
+
+///////////////////////////////////////////////////
+/*
 // Lecture 109
-//
+// Maps: Fundamentals
+const rest = new Map();
+rest.set('name', 'Angel In Us.');
+rest.set(1, 'Kampala, Uganda');
+console.log(rest.set(2, 'Nairobi, Kenya'));
+
+// Map can receive any data-type
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open :)')
+  .set(false, 'We are closed :(');
+
+// The get() method
+console.log(rest.get('name'));
+console.log(rest.get(false));
+console.log(rest.get(1));
+console.log(rest.get('open'));
+console.log(rest.get('close'));
+
+// Example
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+// Map Methods
+console.log(rest.has('categories'));
+rest.delete(2);
+console.log(rest);
+
+// The .size property
+console.log(rest.size);
+
+// Remove all the elemensts from the Map
+// rest.clear();
+// console.log(rest);
+
+// Arrays and Object as key
+const arr = [1, 2];
+rest.set(arr, 'test');
+console.log(rest);
+console.log(rest.get(arr));
+
+// DOM Elements (Special type of object)
+rest.set(document.querySelector('h1'), 'Heading');
+console.log(rest);
 
 ///////////////////////////////////////////////////
 // Lecture 108
