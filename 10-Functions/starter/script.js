@@ -387,6 +387,7 @@ run_once();
 console.log(is_not_private);
 */
 
+/*
 // Lecture 128
 // Closures
 const secure_booking = function () {
@@ -406,3 +407,88 @@ booker();
 
 // Take a look at the closure indirectly
 console.dir(booker);
+*/
+/////////////////////////////////////////
+
+/*
+// Lecture 129
+// More closure examples
+
+// Example 1
+let f;
+
+const g = function () {
+  const a = 23;
+
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+g(); // result is a = 23 and g assigned a function to the f variable f = function(){}
+f(); // 46
+
+// the f() function does closed over any variable of the execution context in which it was defined.
+
+const h = function () {
+  const b = 777;
+
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+// Re-assigning the f function
+h(); // b = 777 and f get re-assigned a new function
+f(); // 1554
+
+// Inspect the variable environment of f
+// To see what is inside the closure
+console.dir(f); // closure contains the value of b
+
+// Example 2
+
+const board_passengers = function (n, wait) {
+  const per_group = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all the ${n} passengers`);
+    console.log(`There are 3 groups, each with ${per_group} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+// The board_passengers() is a scope in which the setTimeout() function is created
+
+// setTimeout(function () {
+//   console.log('TIMER');
+// }, 2000); // THE call-back function get called later after 2 seconds.
+
+// Closure has priority over scope
+const per_group = 300;
+board_passengers(180, 3);
+*/
+//////////////////////////////////////////
+
+// Lecture 130
+// Coding Challenge #2
+
+/*
+This is more of a thinking challenge than a coding challenge 🤓
+
+Take the IIFE below and at the end of the function, attach an event listener that changes the color of the selected h1 element ('header') to blue, each time the BODY element is clicked. Do NOT select the h1 element again!
+
+And now explain to YOURSELF (or someone around you) WHY this worked! Take all the time you need. Think about WHEN exactly the callback function is executed, and what that means for the variables involved in this example.
+
+GOOD LUCK 😀
+*/
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
